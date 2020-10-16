@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/static/Script.js"></script>
+</head>
+
+<body>
+    <h1>Aquí inician los encuentros</h1>
+    <br>
+    <form action="/procesa/partido1" method="POST" name="partido1" id="partido1">
+        <p><label> {{registros[0][0]}} <input type="number" name="goles_e1" id="goles_e1" required></label> VS <label>
+                {{registros[1][0]}} <input type="number" required name="goles_e2" id="goles_e2"></label></p>
+                <input type="hidden" value="{{registros[0][0]}}" name="nombre_e1" id="nombre_e1">
+                <input type="hidden" value="{{registros[1][0]}}" name="nombre_e2" id="nombre_e2">
+        <button type="submit">Enviar marcador</button>
+    </form>
+
+</html>

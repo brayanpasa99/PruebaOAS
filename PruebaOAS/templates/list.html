@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+   <table>
+
+      <tr id="titulo" name="titulo">
+
+         <th colspan="10">
+            <h3> Consultar {{entidad}}</h3>
+         </th>
+
+      </tr>
+
+      <tr>
+
+         {% for campo in campos %}
+
+         <th>
+
+            <p>{{campo['name']}}</p>
+
+         </th>
+         {% endfor %}
+      </tr>
+      {% for registro in registros %}
+      <tr>
+         {% for dato in registro %}
+         <th>
+            <p>{{dato}}</p>
+         </th>
+         {% endfor %}
+         <th>
+            <form action="/delete/{{entidad}}" method="POST">
+               <input type="hidden" value="{{registro[0]}}" name="idborrar">
+               <button type="submit">
+                  <i class="fa fa-minus"></i>
+               </button>
+            </form>
+            <form action="/formupdate/{{entidad}}" method="POST">
+               <input type="hidden" value="{{registro[0]}}" name="idact">
+               <button type="submit">
+                  <i class="fa fa-edit"></i>
+               </button>
+            </form>
+         </th>
+      </tr>
+      {% endfor %}
+   </table>
+
+   <a href="/">Go back to home page</a>
+</body>
+
+</html>
